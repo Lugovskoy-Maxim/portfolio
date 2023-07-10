@@ -12,22 +12,21 @@ const Projects = () => (
             title={project.about_full}
           >
             <a
+              className="projects__container-list-item"
               href={project.link}
-              className="projects__container-list-item-link"
-              target="__blank"
+              title={project.about_full}
             >
-              <img
-                className="projects__container-list-item-image"
-                src={project.image}
-                alt={project.name}
-              />
-              <div className="projects__container-list-item-description">
-                <p className="projects__container-list-item-name">
+              <div
+                className="projects__container-list-item-background"
+                style={{ backgroundImage: `url(${project.image})` }}
+              ></div>
+              <div className="projects__container-list-item-content">
+                <p className="projects__container-list-item-category">
                   {project.name}
                 </p>
-                <p className="projects__container-list-item-about">
+                <h3 className="projects__container-list-item-heading">
                   {project.about}
-                </p>
+                </h3>
               </div>
             </a>
           </li>

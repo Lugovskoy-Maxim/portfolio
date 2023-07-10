@@ -29,7 +29,6 @@
     width: 1440px;
     flex-direction: column;
     align-items: flex-start;
-    // gap: 56px;
 
     &-list {
       flex-wrap: wrap;
@@ -40,17 +39,66 @@
       gap: 32px;
       list-style-type: none;
 
+      &:hover > &-item:not(:hover) &-item-background {
+        filter: brightness(0.5) saturate(0.5) contrast(1.6) blur(10px);
+      }
+
       &-item {
+        list-style: none;
+        position: relative;
         display: flex;
         width: 405px;
-        height: 305px;
+        height: 405px;
         flex-direction: column;
         align-items: center;
         border-radius: 14px;
-        border: 2px solid var(--background-light, #fff);
-        background: var(--background-light, #fff);
+        border: 2px solid #fffbfb6c;
         box-shadow: 9px 5px 13px 0px rgba(0, 0, 0, 0.25);
         overflow: hidden;
+
+        &:before {
+          display: block;
+          padding-bottom: 150%;
+          width: 100%;
+        }
+
+        &:hover &-background {
+          transform: scale(1.05) translateZ(0);
+        }
+
+        &-content {
+          left: 0;
+          padding: 24px;
+          position: absolute;
+          top: 0;
+        }
+
+        &-category {
+          color: #fefefe;
+          font-size: 18px;
+          margin-bottom: 8px;
+          text-transform: uppercase;
+        }
+
+        &-heading {
+          color: #fefefe;
+          font-size: 42px;
+          text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+          line-height: 1.4;
+        }
+
+        &-background {
+          background-size: cover;
+          background-position: center;
+          bottom: 0;
+          filter: brightness(0.75) saturate(1.2) contrast(0.85);
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+          transform-origin: center;
+          transition: filter 200ms linear, transform 200ms linear;
+        }
 
         &-link {
           cursor: pointer;
@@ -68,17 +116,6 @@
           overflow: hidden;
           transition: all 0.1s ease-in-out;
         }
-        // &-image:hover {
-        //   position: absolute;
-        //   z-index: 3;
-        //   width: 405px;
-        //   height: 305px;
-        //   flex-shrink: 0;
-        //   object-fit: fill;
-        //   overflow: hidden;
-        //   border-radius: 20px;
-        //   border: 2px solid var(--background-light, #fff);
-        // }
 
         &-description {
           height: 66px;
