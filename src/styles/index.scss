@@ -1,0 +1,21 @@
+@import '../vendor/fonts/index.scss';
+@import 'header';
+@import 'footer';
+@import 'projects';
+@import 'about';
+@import 'skills';
+@import 'contacts';
+
+body {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-dark, #020c18);
+}
+
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+}

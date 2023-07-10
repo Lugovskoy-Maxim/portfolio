@@ -1,0 +1,38 @@
+.skills {
+  color: var(--background-light, #fff);
+
+  padding: 0 80px;
+  font-family: JetBrains Mono;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  &-title {
+    color: var(--background-light, #fff);
+
+    /* H1 */
+    font-family: JetBrains Mono;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &-container {
+    display: flex;
+    width: 1280px;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  &-item {
+    display: flex;
+    width: 88px;
+    height: 88px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: help;
+  }
+}

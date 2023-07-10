@@ -1,0 +1,84 @@
+.header {
+  display: flex;
+  max-width: 1440px;
+  padding: 27px 20px;
+  align-items: center;
+  gap: 50px;
+  background: var(--background-light, #fff);
+  margin: 0 auto;
+  justify-content: center;
+
+  &__about {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    &-avatar {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    &-text-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 4px;
+
+      &-welcome {
+        color: rgba(2, 12, 24, 0.8);
+        font-family: JetBrains Mono;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin: 0;
+      }
+
+      &-name {
+        color: var(--primary, #000000);
+        font-family: JetBrains Mono;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin: 0;
+
+        &-span {
+          color: var(--primary, #98ce00);
+        }
+      }
+    }
+
+    &-navigation {
+      display: flex;
+      align-items: flex-start;
+      gap: 43px;
+
+      &-link {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        color: #98ce00;
+        font-family: JetBrains Mono;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        cursor: pointer;
+
+        &-title {
+          color: black;
+          margin: 0;
+          padding: 0;
+          font-family: JetBrains Mono;
+          font-size: 25px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+      }
+    }
+  }
+}
