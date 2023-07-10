@@ -1,7 +1,7 @@
 import email from '../../images/email.svg';
 import tg from '../../images/tg.svg';
 import phone from '../../images/phone.svg';
-import github from '../../images/Github.svg';
+import github from '../../images/github.svg';
 import vk from '../../images/vk.svg';
 
 const Contacts = () => (
