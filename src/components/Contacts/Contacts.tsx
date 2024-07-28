@@ -1,8 +1,8 @@
-import email from '../../images/email.svg';
-import tg from '../../images/tg.svg';
-import phone from '../../images/phone.svg';
-import github from '../../images/github.svg';
-import vk from '../../images/vk.svg';
+import email from "../../images/email.svg";
+import tg from "../../images/tg.svg";
+import phone from "../../images/phone.svg";
+import github from "../../images/github.svg";
+import vk from "../../images/vk.svg";
 
 const Contacts = () => (
   <section className="contacts" id="contacts">
@@ -47,14 +47,14 @@ const Contacts = () => (
               alt="Номер телефона"
               className="contacts-info-list-item-image"
             />
-            <a
+            {/* <a
               href="tel:89934723166"
               target="_blank"
               rel="noreferrer"
               className="contacts-info-list-item-link"
             >
               +7(993) 472-31-66
-            </a>
+            </a> */}
           </li>
         </ul>
       </div>
