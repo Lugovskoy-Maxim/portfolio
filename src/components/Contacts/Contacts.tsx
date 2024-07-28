@@ -59,7 +59,7 @@ const Contacts = () => (
         </ul>
       </div>
       <div className="contacts-media">
-        <p className="contacts-media-title">Медия:</p>
+        <p className="contacts-media-title">Медиа:</p>
         <ul className="contacts-media-list">
           <li className="contacts-media-list-item">
             <a
