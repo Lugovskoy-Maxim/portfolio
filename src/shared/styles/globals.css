@@ -6,9 +6,9 @@
 }
 
 :root {
-  --color-background: #2D3137;
-  --color-primary: #78C2DD;
-  --color-gray: #BBC3D3;
+  --background: #2D3137;
+  --primary: #78C2DD;
+  --gray: #BBC3D3;
 }
 
 @media (prefers-color-scheme: dark) {
