@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Link } from "@/shared/ui";
+import { HeaderLink } from "@/shared/ui";
 
 import logo_default from "../../../../public/logo_default.svg";
 import tg_logo from "../../../../public/media/tg.svg";
@@ -17,45 +17,84 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <header className="bg-(--background)">
+    <header className="bg-(--background) md:px-10 ">
+      <div className="absolute left-8 top-0 hidden flex-col space-y-4 items-center md:flex z-20">
+        {/* Вертикальная линия с навигацией */}
+        <div className="w-px h-40 bg-gray-400"></div>
+        <HeaderLink
+          href={"/"}
+          variant="secondary"
+          icon={true}
+          activeClassName="font-bold text-white"
+          onClick={closeMenu}
+          iconSrc={git_logo}
+          iconAlt="Github"
+          iconSize="h-6 w-6"
+        />
+
+        <HeaderLink
+          href={"/"}
+          variant="secondary"
+          icon={true}
+          activeClassName="font-bold text-white"
+          onClick={closeMenu}
+          iconSrc={tg_logo}
+          iconAlt="Telegram"
+          iconSize="h-6 w-6"
+        />
+
+        <HeaderLink
+          href={"/"}
+          variant="secondary"
+          icon={true}
+          activeClassName="font-bold text-white"
+          onClick={closeMenu}
+          iconSrc={email_logo}
+          iconAlt="Email"
+          iconSize="h-6 w-6"
+        />
+      </div>
+
       <div className="container mx-auto px-4 py-6 flex justify-between items-center">
         {/* Логотип */}
-        <div className="flex gap-1">
+        <div className="flex gap-1 select-none">
           <Image src={logo_default} alt="TomiloDev" className="h-8 w-8" />
           <p className="text-white font-bold text-2xl">TomiloDev</p>
         </div>
 
         {/* Навигация для десктопа */}
         <nav className="hidden md:flex space-x-9">
-          <Link
+          <HeaderLink
             href="/"
             variant="secondary"
             activeClassName="font-bold text-white"
-          >
-            главная
-          </Link>
-          <Link
+            text="главная"
+          />
+
+          <HeaderLink
             href="/projects"
             variant="secondary"
             activeClassName="font-bold text-white"
-          >
-            проекты
-          </Link>
-          <Link
+            text="проекты"
+          />
+          <HeaderLink
             href="/about"
             variant="secondary"
             activeClassName="font-bold text-white"
-          >
-            обо мне
-          </Link>
-          <Link
+            text="обо мне"
+          />
+
+          <HeaderLink
             href="/contacts"
             variant="secondary"
             activeClassName="font-bold text-white"
-          >
-            контакты
-          </Link>
+            text="контакты"
+          />
         </nav>
 
         {/* Кнопка бургера/крестика для мобилок */}
@@ -106,68 +145,68 @@ export default function Header() {
         >
           <div className="justify-start items-center container mx-auto px-4 py-12 flex flex-col space-y-8  h-full overflow-y-auto">
             {/* Ссылки меню */}
-            <Link
+            <HeaderLink
               href="/"
               variant="mobile"
               activeClassName="font-bold text-white"
-              onClick={toggleMenu}
-            >
-              главная
-            </Link>
-            <Link
+              onClick={closeMenu}
+              text="главная"
+            />
+
+            <HeaderLink
               href="/projects"
               variant="mobile"
               activeClassName="font-bold text-white"
-              onClick={toggleMenu}
-            >
-              проекты
-            </Link>
-            <Link
+              onClick={closeMenu}
+              text="проекты"
+            />
+
+            <HeaderLink
               href="/about"
               variant="mobile"
               activeClassName="font-bold text-white"
-              onClick={toggleMenu}
-            >
-              обо мне
-            </Link>
-            <Link
+              onClick={closeMenu}
+              text="обо мне"
+            />
+
+            <HeaderLink
               href="/contacts"
               variant="mobile"
               activeClassName="font-bold text-white"
-              onClick={toggleMenu}
-            >
-              контакты
-            </Link>
+              onClick={closeMenu}
+              text="контакты"
+            />
 
             {/* Социальные иконки */}
             <div className="flex gap-8 mt-auto justify-center sticky bottom-0 bg-background py-4">
-              <Link
+              <HeaderLink
                 href={"/"}
                 variant="secondary"
                 icon={true}
                 activeClassName="font-bold text-white"
-                onClick={toggleMenu}
-              >
-                <Image src={git_logo} alt="Github" className="h-16 w-16" />
-              </Link>
-              <Link
+                onClick={closeMenu}
+                iconSrc={git_logo}
+                iconAlt="Github"
+              />
+
+              <HeaderLink
                 href={"/"}
                 variant="secondary"
                 icon={true}
                 activeClassName="font-bold text-white"
-                onClick={toggleMenu}
-              >
-                <Image src={tg_logo} alt="Telegram" className="h-16 w-16" />
-              </Link>
-              <Link
+                onClick={closeMenu}
+                iconSrc={tg_logo}
+                iconAlt="Telegram"
+              />
+              <HeaderLink
                 href={"/"}
                 variant="secondary"
                 icon={true}
                 activeClassName="font-bold text-white"
-                onClick={toggleMenu}
-              >
-                <Image src={email_logo} alt="Email" className="h-16 w-16 hover:text-gray-200" />
-              </Link>
+                onClick={closeMenu}
+                iconSrc={email_logo}
+                iconAlt="Email"
+              />
             </div>
           </div>
         </nav>
