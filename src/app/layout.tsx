@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="ru" className="">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${geistDancing.variable} min-h-screen max-h-screen min-w-screen max-w-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} ${geistDancing.variable} min-h-screen max-h-screen min-w-screen max-w-screen flex flex-col justify-start items-center`}
       >
         <Header/>
         {children}

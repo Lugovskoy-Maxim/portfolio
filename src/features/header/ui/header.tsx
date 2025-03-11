@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { HeaderLink } from "@/shared/ui";
+import { HeaderLink } from "@/shared";
 
 import logo_default from "../../../../public/logo_default.svg";
 import tg_logo from "../../../../public/media/tg.svg";
 import git_logo from "../../../../public/media/git.svg";
 import email_logo from "../../../../public/media/email.svg";
+import { SITE_TITLE } from "@/shared/lib/constants";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние для управления меню
@@ -22,8 +23,8 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-(--background) md:px-10 ">
-      <div className="absolute left-8 top-0 hidden flex-col space-y-4 items-center md:flex z-20">
+    <header className="flex justify-center items-center bg-(--background) px-4 md:px-18 max-w-5xl w-full ">
+      <div className="absolute left-8 top-0 hidden flex-col space-y-4 items-center lg:flex z-20">
         {/* Вертикальная линия с навигацией */}
         <div className="w-px h-40 bg-gray-400"></div>
         <HeaderLink
@@ -60,11 +61,11 @@ export default function Header() {
         />
       </div>
 
-      <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+      <div className="container mx-auto py-6 flex justify-between items-center">
         {/* Логотип */}
         <div className="flex gap-1 select-none">
           <Image src={logo_default} alt="TomiloDev" className="h-8 w-8" />
-          <p className="text-white font-bold text-2xl">TomiloDev</p>
+          <p className="text-white font-bold text-2xl">{SITE_TITLE}</p>
         </div>
 
         {/* Навигация для десктопа */}
