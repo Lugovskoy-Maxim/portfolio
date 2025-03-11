@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <header className="flex justify-center items-center bg-(--background) px-4 md:px-18 max-w-5xl w-full ">
-      <div className="absolute left-8 top-0 hidden flex-col space-y-4 items-center lg:flex z-20">
+      <div className="absolute left-8 top-0 hidden flex-col space-y-4 items-center lg:flex z-30">
         {/* Вертикальная линия с навигацией */}
         <div className="w-px h-40 bg-gray-400"></div>
         <HeaderLink
@@ -140,7 +140,7 @@ export default function Header() {
 
         {/* Мобильное меню (ссылки) */}
         <nav
-          className={`md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-(--background) transition-transform duration-300 ease-in-out transform z-10 ${
+          className={`md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-(--background) transition-transform duration-300 ease-in-out transform z-30 ${
             isMenuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
