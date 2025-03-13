@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "../../../../public/logo_default.svg";
 import userImage from "../../../../public/user/Image.png";
-import dots_image from "../../../../public/bg/Dots.png";
+import dots_image from "../../../../public/bg/dots_image.svg";
 import { USER_STATUS } from "@/shared/lib/constants";
 
 export default function UserProfile() {
@@ -11,18 +11,23 @@ export default function UserProfile() {
         <Image
           src={logo}
           alt="Логотип"
+          width={32}
+          height={32}
           className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 absolute z-0 left-0 top-0"
         />
         <Image
           src={userImage}
           alt="Фото профиля"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover z-10"
         />
                 <Image
           src={dots_image}
           alt="dots"
-          className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 absolute z-20 right-0 bottom-1/15"
+          width={32}
+          height={32}
+          className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 absolute z-20 right-0 bottom-1/15 animate-pulse"
         />
       </div>
       <div className="flex items-center gap-2 border border-gray-600 text-gray-400 py-1 px-3">

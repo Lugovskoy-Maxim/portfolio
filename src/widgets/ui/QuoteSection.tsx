@@ -1,6 +1,6 @@
 import { QUOTE, QUOTE_AUTHOR } from "@/shared/lib/constants";
 
-export function QuoteText() {
+export default function QuoteText() {
   return (
     <div className="flex flex-col items-end ">
       <div className="border border-gray-600 relative">

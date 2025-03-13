@@ -32,7 +32,7 @@ export default function HeaderLink({
   const pathname = usePathname();
   const isActive = pathname === props.href;
 
-  const baseStyles = 'transition-colors duration-200';
+  const baseStyles = 'transition-colors duration-200 text-xl';
   const variantStyles = {
     primary: 'text-blue-600 hover:text-blue-800',
     secondary: 'text-gray-400 hover:text-gray-200',
@@ -47,7 +47,7 @@ export default function HeaderLink({
       {...props}
     >
       {!icon && <p className="text-sky-300">#</p>}
-      {icon &&  <Image src={iconSrc} alt={iconAlt} className={`${iconSize}`}  />}
+      {icon &&  <Image src={iconSrc} alt={iconAlt} width={32} height={32} className={`${iconSize}`}  />}
       {text && <p >{text}</p>}
     </Link>
   );
