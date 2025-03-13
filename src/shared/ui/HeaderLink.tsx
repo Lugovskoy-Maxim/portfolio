@@ -32,7 +32,7 @@ export default function HeaderLink({
   const pathname = usePathname();
   const isActive = pathname === props.href;
 
-  const baseStyles = 'transition-colors duration-200 text-xl';
+  const baseStyles = 'transition-colors duration-200 text-xl hover:opacity-75 transition-opacity';
   const variantStyles = {
     primary: 'text-blue-600 hover:text-blue-800',
     secondary: 'text-gray-400 hover:text-gray-200',
