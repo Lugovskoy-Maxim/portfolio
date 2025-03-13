@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Dancing_Script } from "next/font/google";
 import "../shared/styles/globals.css";
 import Header from "@/features/header";
+import { Footer } from "@/features/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,10 +32,11 @@ export default function RootLayout({
   return (
     <html lang="ru" className="">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${geistDancing.variable} min-h-screen max-h-screen min-w-screen max-w-screen flex flex-col justify-start items-center`}
+        className={`${geistSans.variable} ${geistMono.variable} ${geistDancing.variable} min-h-screen max-h-screen min-w-screen max-w-screen flex flex-col justify-start items-center overflow-x-hidden`}
       >
         <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
