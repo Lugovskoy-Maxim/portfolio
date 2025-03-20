@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/features/header";
 import { Fira_Code } from "next/font/google";
-import "../shared/styles/globals.css";
+import "./globals.css";
 import { Footer } from "@/features/footer";
 
 
