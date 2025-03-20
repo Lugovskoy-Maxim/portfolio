@@ -24,8 +24,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Используйте 18, 19 или 20
-          cache: 'npm' # или 'yarn'
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
@@ -54,6 +54,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Check GitHub Pages settings
+        run: |
+          echo "Ensure GitHub Pages is enabled in your repository settings:"
+          echo "https://github.com/${{ github.repository }}/settings/pages"
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
