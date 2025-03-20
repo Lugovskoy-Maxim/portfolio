@@ -10,6 +10,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   className?: string;
+  target?: string;
 }
 
 export function Button({
@@ -21,6 +22,7 @@ export function Button({
   type = "button",
   disabled = false,
   className = "",
+  target = "_self",
 }: ButtonProps) {
   const baseStyles =
     "ms:px-6 ms:py-2 px-3 py-1 text-gray-400 text-sm sm:text-md md:text-base lg:text-lg hover:bg-gray-700 bg-transparent border transition-colors duration-200 cursor-pointer";
@@ -39,7 +41,7 @@ export function Button({
       <Link
         href={href}
         className={styles}
-        target="_blank"
+        target={target}
         rel="noopener noreferrer"
       >
         {children}

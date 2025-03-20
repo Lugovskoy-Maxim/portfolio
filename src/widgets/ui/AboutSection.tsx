@@ -18,11 +18,11 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="flex shrink-0 px-4 md:px-18 w-full max-w-5xl items-start justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col "
+      className="flex shrink-0 m-4 px-4 md:px-18 w-full max-w-5xl items-start justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col "
     >
-      <HeadingSectionTitle title="обо мне" />
+      {!isAboutPage && <HeadingSectionTitle title="обо мне" />}
       <div className="flex flex-col md:flex-row justify-between items-center gap-20 py-6 px-6 md:px-0">
-        <div className="container md:max-w-1/2 w-full">
+        <div className="container md:max-w-1/2 w-full space-y-4">
           {/* Заголовок */}
           <TextArea >
             {`${ABOUT_HELLO} ${HERO_TITLE}`}
@@ -30,7 +30,7 @@ export default function AboutSection() {
           {/* Описание */}
           <TextArea>{ABOUT_DESCRIPTION}</TextArea>
           {/* Кнопка "Узнать больше" */}
-          {!isAboutPage && <Button variant="primary">{"Узнать больше ->"}</Button>}
+          {!isAboutPage && <Button variant="primary" as="a" href="/about">{"Узнать больше ->"}</Button>}
         </div>
 
         {/* Картинка */}
@@ -40,21 +40,21 @@ export default function AboutSection() {
             alt="dots"
             width={32}
             height={32}
-            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 absolute z-10 left-1/10 top-4/15 animate-pulse"
+            className="ww-auto h-auto   absolute z-10 left-1/10 top-4/15 animate-pulse"
           />
           <Image
             src={dots_image}
             alt="dots"
             width={32}
             height={32}
-            className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-18 lg:h-18 absolute z-20 right-1/10 bottom-1/15 animate-pulse"
+            className="w-auto h-auto  absolute z-20 right-1/10 bottom-1/15 animate-pulse"
           />
           <Image
             src={user_image}
             alt="Tomilo"
             width={250}
             height={150}
-            className="z-15"
+            className="z-15 w-auto h-auto  "
           />
         </div>
       </div>

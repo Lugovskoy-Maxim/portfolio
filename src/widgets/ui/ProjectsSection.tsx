@@ -13,7 +13,7 @@ export default function ProjectsSection() {
   const displayedProjects = isProjectsPage ? PROJECTS : PROJECTS.slice(0, 3);
 
   return (
-    <section className="flex shrink-0 px-4 md:px-18 max-w-5xl w-full items-center justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col ">
+    <section className="flex shrink-0 m-4 px-4 md:px-18 max-w-5xl w-full items-center justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col ">
       <div className="flex flex-wrap justify-between items-center w-full h-fit sm:px-18 md:px-0 px-8">
         {!isProjectsPage && <HeadingSectionTitle title="проекты" />}
         <Link href={"/projects"} className="flex shrink-0">

@@ -1,22 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Dancing_Script } from "next/font/google";
-import "../shared/styles/globals.css";
 import Header from "@/features/header";
+import { Fira_Code } from "next/font/google";
+import "../shared/styles/globals.css";
 import { Footer } from "@/features/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const geistDancing = Dancing_Script({
-  variable: "--font-dancing-script",
-  subsets: ["latin"],
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
+  subsets: ["latin", "cyrillic"],
 });
 
 export const metadata: Metadata = {
@@ -30,13 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className="">
+    <html lang="ru">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${geistDancing.variable} min-h-screen max-h-screen min-w-screen max-w-screen flex flex-col justify-start items-center overflow-x-hidden`}
+        className={`${firaCode.variable} min-h-screen min-w-screen max-w-screen flex flex-col justify-start items-center overflow-x-hidden`}
       >
-        <Header/>
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

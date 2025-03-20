@@ -8,7 +8,7 @@ import {
 
 export default function HeroSection() {
   return (
-    <section className="flex shrink-0 px-4 md:px-18 max-w-5xl w-full items-center justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col lg:flex-row ">
+    <section className="flex shrink-0 m-4 px-4 md:px-18 max-w-5xl w-full items-center justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col lg:flex-row ">
       <div className="flex flex-col space-y-2 lg:space-y-5 md:max-w-lg w-full text-center lg:text-left">
         {" "}
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">

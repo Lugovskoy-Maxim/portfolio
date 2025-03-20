@@ -1,6 +1,6 @@
-export const SITE_TITLE = "TomiloDev";
+export const SITE_TITLE = "Tomilo-Dev.ru";
 export const HERO_TITLE = "TOMILO";
-export const HERO_PROFESSION = ["веб дизайнер", "фронтенд разработчик"];
+export const HERO_PROFESSION = ["фронтенд-разработчик", "веб-дизайнер"];
 export const HERO_DESCRIPTION =
   "Специализируюсь на создании современных и интуитивно понятных интерфейсов.";
 export const CONTACT_BUTTON_TEXT = "Связаться со мной";
@@ -17,7 +17,7 @@ export const ABOUT_DESCRIPTION = [
 ];
 export const ABOUT_BUTTON_TEXT = "Узнать больше";
 
-export const CONTACTS_DESCRIPTION = "Я заинтересован в работе фрилансера или постоянным разработчиком. Однако, если у вас есть какие-либо другие предложения или вопросы, не стесняйтесь обращаться ко мне."
+export const CONTACTS_DESCRIPTION = "Я заинтересован в работе на фрилансе или постоянным разработчиком. Однако, если у вас есть какие-либо другие предложения или вопросы, не стесняйтесь обращаться ко мне."
 
 export const CONTACTS_LINKS = [
   {
@@ -25,14 +25,13 @@ export const CONTACTS_LINKS = [
     type: "telegram",
     link: "https://t.me/TomiloDev",
   },
-  // {
-  //   title: "GitHub",
-  //   type: "github",
-  //   link: "https://github.com/TomiloDev",
-  // },
   {
     title: "Lugovskou.myu@ya.ru",
     type: "email",
     link: "mailto:lugovskou.myu@ya.ru",
   },
 ];
+
+export const HERO_EMAIL = "lugovskou.myu@ya.ru";
+export const HERO_TELEGRAM = "https://t.me/TomiloDev";
+export const HERO_GITHUB = "https://github.com/Lugovskoy-Maxim"

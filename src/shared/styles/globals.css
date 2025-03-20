@@ -1,14 +1,10 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 :root {
   --background: #2D3137;
   --primary: #78C2DD;
   --gray: #BBC3D3;
+  --font-fira-code: var(--font-geist-fira-code);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,12 +12,13 @@
     --background: #2D3137;
     --primary: #78C2DD;
     --gray: #BBC3D3;
+    --font-fira-code: var(--font-geist-fira-code);
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-fira-code), Arial, Helvetica, sans-serif;
   position: relative;
 }

@@ -9,7 +9,7 @@ export default function ContactSection() {
   return (
     <section
       id="contacts"
-      className="flex shrink-0 px-4 md:px-18 max-w-5xl w-full items-start justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col "
+      className="flex shrink-0 m-4 px-4 md:px-18 max-w-5xl w-full items-start justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col "
     >
       {!isContactsPage && <HeadingSectionTitle title="контакты" />}
       <div className="flex flex-col md:flex-row justify-between items-center gap-20 py-6 px-6 md:px-0">

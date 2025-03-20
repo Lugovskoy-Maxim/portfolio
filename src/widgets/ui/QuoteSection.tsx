@@ -2,7 +2,7 @@ import { QUOTE, QUOTE_AUTHOR } from "@/shared/lib/constants";
 
 export default function QuoteText() {
   return (
-    <div className="flex flex-col items-end ">
+    <section className="flex flex-col items-end m-4">
       <div className="border border-gray-600 relative">
         <span className="absolute left-5 -top-3 text-4xl text-gray-400">
           {"“"}
@@ -19,6 +19,6 @@ export default function QuoteText() {
           {" - "} {QUOTE_AUTHOR}
         </p>
       </div>
-    </div>
+    </section>
   );
 }

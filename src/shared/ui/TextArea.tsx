@@ -10,7 +10,7 @@ export default function  TextArea ({ children, className = "" }: TextAreaProps) 
     return (
       <>
         {children.map((description, index) => (
-          <p key={index} className={`text-md md:text-lg text-gray-400 mb-8 ${className}`}>
+          <p key={index} className={`text-md md:text-lg text-gray-400 ${className}`}>
             {description}
           </p>
         ))}
@@ -19,7 +19,7 @@ export default function  TextArea ({ children, className = "" }: TextAreaProps) 
   }
 
   return (
-    <p className={`flex text-md md:text-lg text-gray-400 mb-8 ${className}`}>
+    <p className={`flex text-md md:text-lg text-gray-400 ${className}`}>
       {children}
     </p>
   );

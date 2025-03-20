@@ -8,7 +8,7 @@ import logo_default from "../../../../public/logo_default.svg";
 import tg_logo from "../../../../public/media/tg.svg";
 import git_logo from "../../../../public/media/git.svg";
 import email_logo from "../../../../public/media/email.svg";
-import { SITE_TITLE } from "@/shared/lib/constants";
+import { HERO_EMAIL, HERO_GITHUB, HERO_TELEGRAM, SITE_TITLE } from "@/shared/lib/constants";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние для управления меню
@@ -23,12 +23,12 @@ export default function Header() {
   };
 
   return (
-    <header className="flex justify-center items-center bg-(--background) px-4 md:px-18 max-w-5xl w-full ">
+    <header className="flex font-(--font-) drop-shadow-2xl rounded-b-lg border-b border-gray-800 sticky top-0 justify-center items-center bg-(--background) mb-8 px-4 md:px-18 max-w-5xl w-full z-30">
       <div className="absolute left-8 top-0 hidden flex-col space-y-4 items-center lg:flex z-30">
         {/* Вертикальная линия с навигацией */}
         <div className="w-px h-40 bg-gray-400"></div>
         <HeaderLink
-          href={"/"}
+          href={HERO_GITHUB}
           variant="secondary"
           icon={true}
           activeClassName="font-bold text-white"
@@ -39,7 +39,7 @@ export default function Header() {
         />
 
         <HeaderLink
-          href={"/"}
+          href={HERO_TELEGRAM}
           variant="secondary"
           icon={true}
           activeClassName="font-bold text-white"
@@ -50,7 +50,7 @@ export default function Header() {
         />
 
         <HeaderLink
-          href={"/"}
+          href={`mailto:${HERO_EMAIL}`}
           variant="secondary"
           icon={true}
           activeClassName="font-bold text-white"
