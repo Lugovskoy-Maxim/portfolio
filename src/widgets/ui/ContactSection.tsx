@@ -15,9 +15,9 @@ export default function ContactSection() {
       <div className="flex flex-col md:flex-row justify-between items-center gap-20 py-6 px-6 md:px-0">
         <TextArea>{CONTACTS_DESCRIPTION}</TextArea>
         <div className="flex shrink-0 flex-col border border-gray-400 px-6 py-4 gap-2">
-          <h1 className="text-lg font-semibold mb-2 text-gray-200">
+          <h5 className="text-lg font-semibold mb-2 text-gray-200">
             {"Свяжись со мной"}
-          </h1>
+          </h5>
           {CONTACTS_LINKS.map((item, index) => (
             <ContactLink key={index} item={item} />
           ))}
