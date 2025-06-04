@@ -3,7 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
   images: {
-    unoptimized: process.env.NODE_ENV === 'production' ? false : true,
+    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
   },
   basePath: process.env.NODE_ENV === 'production' ? `/${process.env.REPO_NAME}` : '/', 
   assetPrefix: process.env.NODE_ENV === 'production' ? `/${process.env.REPO_NAME}/` : '/', 
