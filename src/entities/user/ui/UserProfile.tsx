@@ -30,7 +30,7 @@ export default function UserProfile() {
           className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 absolute z-20 right-0 bottom-1/15 animate-pulse"
         />
       </div>
-      <div className="flex items-center gap-2 border border-gray-600 text-gray-400 py-1 px-3">
+      <div className="flex items-center gap-2 border border-gray-600 rounded-sm text-gray-400 py-1 px-3">
         <div className="w-3 h-3 bg-sky-400"></div>
         <p className="text-sm sm:text-md md:text-base lg:text-lg">{USER_STATUS}</p>
       </div>

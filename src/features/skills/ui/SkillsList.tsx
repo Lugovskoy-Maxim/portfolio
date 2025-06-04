@@ -30,7 +30,7 @@ export default function SkillsList() {
         {skillsData.map((category) => (
           <div
             key={category.title}
-            className="border border-gray-400 w-full md:w-fit md:max-w-57 sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)]lg:w-fit"
+            className="border rounded-sm  border-gray-400 w-full md:w-fit md:max-w-57 sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)]lg:w-fit"
           >
             <h3 className="text-xl font-semibold mb-2 border-b border-gray-400 w-full px-5 py-1">
               {category.title}

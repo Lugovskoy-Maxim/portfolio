@@ -18,7 +18,7 @@ interface PROJECTS {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className=" border border-gray-600 mx-2 h-fit">
+    <div className=" border border-gray-600 mx-2 h-fit rounded-sm overflow-hidden">
       <Image className="w-full " src={project.image} alt={project.title} width={250} height={100}/>
       <div className="border border-gray-600 p-2  flex flex-wrap gap-2">
         {project.technologies.map((tech, index) => (
