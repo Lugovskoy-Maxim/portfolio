@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
   },
-  basePath: process.env.NODE_ENV === 'production' ? `/${process.env.REPO_NAME}` : '/', 
-  assetPrefix: process.env.NODE_ENV === 'production' ? `/${process.env.REPO_NAME}` : '/', 
+  basePath: process.env.NODE_ENV === 'production' ? `/${process.env.REPO_NAME}` : '', 
+  assetPrefix: process.env.NODE_ENV === 'production' ? `/${process.env.REPO_NAME}` : '', 
   
   // experimental: {
   //   optimizeCss: true, // Активирует оптимизацию CSS
