@@ -1,15 +1,19 @@
+"use client";
 
-"use client"
+import { usePathname } from "next/navigation";
 import { SkillsList } from "@/features/skills";
 import { HeadingSectionTitle } from "@/shared";
-import { usePathname } from "next/navigation";
 
 export default function SkillsSection() {
   const pathname = usePathname();
   const isAboutPage = pathname?.startsWith("/about") ?? false;
 
   return (
-    <section id='skills' className="flex shrink-0 m-4 px-4 md:px-18 max-w-5xl w-full items-start justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col ">
+    <section
+      id="skills"
+      className="flex w-full max-w-5xl flex-col gap-6 px-4 py-12 md:px-8"
+      aria-labelledby="skills-heading"
+    >
       {!isAboutPage && <HeadingSectionTitle title="навыки" />}
       <SkillsList />
     </section>

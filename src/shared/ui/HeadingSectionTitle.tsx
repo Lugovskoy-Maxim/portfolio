@@ -4,14 +4,12 @@ interface TitleProps {
 
 export default function HeadingSectionTitle({ title }: TitleProps) {
   return (
-    <div className="flex space-x-4 text-left w-fit">
-      <h2 className=" flex text-2xl sm:text-3xl md:text-4xl font-bold text-white w-full gap-1">
-        <span className="text-sky-300 italic">#</span>{" "}
-        <p className="text-3xl italic">{title}</p>
+    <div className="flex w-full items-center gap-4">
+      <h2 className="flex items-center gap-2 text-2xl font-bold text-[var(--foreground)] sm:text-3xl md:text-4xl">
+        <span className="text-[var(--primary)]">#</span>
+        <span className="italic">{title}</span>
       </h2>
-      <p className="border-b hidden md:flex border-sky-400 w-60 h-5 shrink-0">
-        {" "}
-      </p>
+      <div className="h-px flex-1 bg-[var(--border)] min-w-[4rem]" aria-hidden />
     </div>
   );
 }

@@ -1,12 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import clsx from "clsx";
 
 interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary";
   onClick?: () => void;
   as?: "button" | "a";
-  href?: string; 
+  href?: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   className?: string;
@@ -25,37 +26,26 @@ export function Button({
   target = "_self",
 }: ButtonProps) {
   const baseStyles =
-    "ms:px-6 ms:py-2 px-3 py-1 rounded-sm text-gray-400 text-sm sm:text-md md:text-base lg:text-lg hover:bg-gray-700 bg-transparent border transition-colors duration-200 cursor-pointer";
+    "inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] disabled:opacity-50 disabled:cursor-not-allowed";
   const variantStyles = {
-    primary: "border-sky-400",
-    secondary: "border-gray-600",
+    primary:
+      "bg-[var(--primary)] text-[var(--background)] border border-transparent hover:bg-[var(--primary-hover)] hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] active:scale-[0.98]",
+    secondary:
+      "bg-transparent text-[var(--foreground-muted)] border border-[var(--border)] hover:bg-[var(--surface)] hover:text-[var(--foreground)] hover:border-[var(--primary)]/50 active:scale-[0.98]",
   };
-  const disabledStyles = "opacity-50 cursor-not-allowed";
 
-  const styles = `${baseStyles} ${variantStyles[variant]} ${
-    disabled ? disabledStyles : ""
-  } ${className}`;
+  const styles = clsx(baseStyles, variantStyles[variant], className);
 
   if (as === "a" && href) {
     return (
-      <Link
-        href={href}
-        className={styles}
-        target={target}
-        rel="noopener noreferrer"
-      >
+      <Link href={href} className={styles} target={target} rel="noopener noreferrer">
         {children}
       </Link>
     );
   }
 
   return (
-    <button
-      type={type}
-      className={styles}
-      onClick={onClick}
-      disabled={disabled}
-    >
+    <button type={type} className={styles} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

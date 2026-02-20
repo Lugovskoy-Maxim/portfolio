@@ -1,13 +1,12 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import clsx from "clsx";
 
 interface LinkProps {
-
-  variant?: 'primary' | 'secondary' | 'mobile';
+  variant?: "primary" | "secondary" | "mobile";
   activeClassName?: string;
   icon?: boolean;
   href: string;
@@ -16,39 +15,52 @@ interface LinkProps {
   iconAlt?: string;
   iconSize?: string;
   text?: string;
+  className?: string;
 }
 
 export default function HeaderLink({
-
-  variant = 'primary',
-  activeClassName = '',
+  variant = "primary",
+  activeClassName = "",
   icon = false,
   iconSrc = "",
   iconAlt = "",
-  iconSize = "h-12 w-12",
+  iconSize = "h-8 w-8",
   text = "",
+  className = "",
   ...props
 }: LinkProps) {
   const pathname = usePathname();
   const isActive = pathname === props.href;
 
-  const baseStyles = 'transition-colors duration-200 text-xl hover:opacity-75 transition-opacity';
+  const baseStyles =
+    "inline-flex items-center gap-1.5 transition-colors duration-200 text-base hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] rounded";
   const variantStyles = {
-    primary: 'text-blue-600 hover:text-blue-800',
-    secondary: 'text-gray-400 hover:text-gray-200',
-    mobile: 'text-3xl text-gray-400 hover:text-gray-200',
+    primary: "text-[var(--primary)] hover:text-[var(--primary-hover)]",
+    secondary: "text-[var(--foreground-muted)] hover:text-[var(--foreground)]",
+    mobile: "text-xl text-[var(--foreground-muted)] hover:text-[var(--foreground)]",
   };
 
   return (
     <Link
-      className={`flex gap-0.5 w-fit ${baseStyles} ${variantStyles[variant]} ${
-        isActive ? activeClassName : ''
-      } pointer`}
+      className={clsx(
+        baseStyles,
+        variantStyles[variant],
+        isActive && activeClassName,
+        className
+      )}
       {...props}
     >
-      {!icon && <p className="text-sky-300">#</p>}
-      {icon &&  <Image src={iconSrc} alt={iconAlt} width={32} height={32} className={`${iconSize}`}  />}
-      {text && <p >{text}</p>}
+      {!icon && <span className="text-[var(--primary)]">#</span>}
+      {icon && (
+        <Image
+          src={iconSrc}
+          alt={iconAlt}
+          width={24}
+          height={24}
+          className={iconSize}
+        />
+      )}
+      {text && <span>{text}</span>}
     </Link>
   );
 }

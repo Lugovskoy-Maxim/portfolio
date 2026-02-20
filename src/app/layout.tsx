@@ -31,12 +31,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="ru" className="scroll-pt-20">
       <body
-        className={`${firaCode.variable} min-h-screen min-w-screen max-w-screen flex flex-col justify-start items-center overflow-x-hidden`}
+        className={`${firaCode.variable} min-h-screen w-full max-w-screen flex flex-col items-center overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]`}
       >
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--primary)] focus:text-[var(--background)] focus:rounded-lg">
+          Перейти к основному содержимому
+        </a>
         <Header />
-        {children}
+        <div id="main" className="flex flex-col flex-1 w-full" tabIndex={-1}>
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

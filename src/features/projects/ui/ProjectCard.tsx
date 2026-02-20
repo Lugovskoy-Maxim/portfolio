@@ -1,52 +1,65 @@
-import { Button } from "@/shared/ui/Button";
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { Button } from "@/shared/ui/Button";
 
 interface ProjectCardProps {
-  project: PROJECTS;
+  project: {
+    id: number;
+    title: string;
+    description: string;
+    technologies: string[];
+    demo?: string;
+    code: string;
+    image: string;
+  };
 }
-
-interface PROJECTS {
-  id: number;
-  title: string;
-  description: string;
-  technologies: string[];
-  demo?: string; 
-  code: string; 
-  image: string; 
-}
-
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className=" border border-gray-600 mx-2 h-fit rounded-sm overflow-hidden">
-      <Image className="w-full " src={project.image} alt={project.title} width={250} height={100}/>
-      <div className="border border-gray-600 p-2  flex flex-wrap gap-2">
-        {project.technologies.map((tech, index) => (
-          <span key={index} className="px-2 py-1 text-sm text-gray-300">
-            {tech}
-          </span>
-        ))}
+    <motion.article
+      className="group flex h-full flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] transition-colors hover:border-[var(--primary)]/40 hover:bg-[var(--surface-hover)]"
+      whileHover={{ y: -2 }}
+      transition={{ duration: 0.2 }}
+    >
+      <div className="relative aspect-video w-full overflow-hidden bg-[var(--background-elevated)]">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+        />
       </div>
-      <h3 className=" px-4 py-2 text-xl font-bold text-white">{project.title}</h3>
-      <p className=" px-4 py-2  text-gray-400">{project.description}</p>
-
-      <div className="flex gap-2 px-4 py-2 ">
-        {project.demo && (
-          <Button
-            as="a"
-            href={project.demo}
-          >
-        {"Демо <~>"}
+      <div className="flex flex-1 flex-col gap-3 border-t border-[var(--border-muted)] p-4">
+        <div className="flex flex-wrap gap-2">
+          {project.technologies.map((tech, index) => (
+            <span
+              key={index}
+              className="rounded-md bg-[var(--primary-muted)] px-2 py-0.5 text-xs font-medium text-[var(--primary)]"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+        <h3 className="text-lg font-semibold text-[var(--foreground)]">
+          {project.title}
+        </h3>
+        <p className="flex-1 text-sm text-[var(--foreground-muted)] leading-relaxed">
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-2 pt-1">
+          {project.demo && (
+            <Button as="a" href={project.demo} variant="primary">
+              Демо →
+            </Button>
+          )}
+          <Button as="a" href={project.code} variant="secondary">
+            Код
           </Button>
-        )}
-        <Button
-          as="a"
-          href={project.code}
-          variant="secondary"
-        >
-          {"Код ≥"}
-        </Button>
+        </div>
       </div>
-    </div>
+    </motion.article>
   );
 }

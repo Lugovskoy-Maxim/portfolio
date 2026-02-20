@@ -1,27 +1,53 @@
 "use client";
+
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { ContactLink, HeadingSectionTitle, TextArea } from "@/shared";
 import { CONTACTS_DESCRIPTION, CONTACTS_LINKS } from "@/shared/lib/constants";
-import { usePathname } from "next/navigation";
+import { Button } from "@/shared/ui/Button";
 
 export default function ContactSection() {
   const pathname = usePathname();
   const isContactsPage = pathname?.startsWith("/contacts") ?? false;
+
   return (
     <section
       id="contacts"
-      className="flex shrink-0 m-4 px-4 md:px-18 max-w-5xl w-full items-start justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col "
+      className="flex w-full max-w-5xl flex-col gap-8 px-4 py-12 md:px-8"
+      aria-labelledby="contacts-heading"
     >
       {!isContactsPage && <HeadingSectionTitle title="контакты" />}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-20 py-6 px-6 md:px-0">
-        <TextArea>{CONTACTS_DESCRIPTION}</TextArea>
-        <div className="flex shrink-0 flex-col border rounded-sm  border-gray-400 px-6 py-4 gap-2">
-          <h5 className="text-lg font-semibold mb-2 text-gray-200">
-            {"Свяжись со мной"}
-          </h5>
-          {CONTACTS_LINKS.map((item, index) => (
-            <ContactLink key={index} item={item} />
-          ))}
-        </div>
+      <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
+        <motion.div
+          className="flex-1"
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          <TextArea>{CONTACTS_DESCRIPTION}</TextArea>
+          {!isContactsPage && (
+            <Button variant="primary" as="a" href="/contacts" className="mt-4">
+              Связаться со мной
+            </Button>
+          )}
+        </motion.div>
+        <motion.div
+          className="shrink-0 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[var(--shadow-md)]"
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
+          <h3 className="mb-4 text-lg font-semibold text-[var(--foreground)]">
+            Свяжись со мной
+          </h3>
+          <div className="flex flex-col gap-3">
+            {CONTACTS_LINKS.map((item, index) => (
+              <ContactLink key={index} item={item} />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

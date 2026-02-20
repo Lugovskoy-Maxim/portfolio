@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { UserProfile } from "@/entities";
 import { ContactButtons } from "@/features/contacts";
 import {
@@ -8,25 +11,44 @@ import {
 
 export default function HeroSection() {
   return (
-    <section className="flex shrink-0 m-4 px-4 md:px-18 max-w-5xl w-full items-center justify-between bg-(--background) gap-5 md:gap-8 lg:gap-10 flex-col lg:flex-row ">
-      <div className="flex flex-col space-y-2 lg:space-y-5 md:max-w-lg w-full text-center lg:text-left">
-        {" "}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+    <section className="flex w-full max-w-5xl flex-col items-center gap-10 px-4 py-12 md:px-8 lg:flex-row lg:justify-between lg:gap-16 lg:py-20">
+      <div className="flex flex-col gap-4 text-center lg:max-w-xl lg:text-left">
+        <motion.h1
+          className="text-3xl font-bold leading-tight text-[var(--foreground)] sm:text-4xl md:text-5xl"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
           {HERO_TITLE}{" "}
-          <span className="text-sky-400">{HERO_PROFESSION[0]}</span>
-          <span>{" и "}</span>  
-          <span className="text-sky-400">{HERO_PROFESSION[1]}</span>
-        </h1>
-        <p className="text-gray-400 text-sm sm:text-md md:text-base lg:text-lg">
+          <span className="text-[var(--primary)]">{HERO_PROFESSION[0]}</span>
+          <span> и </span>
+          <span className="text-[var(--primary)]">{HERO_PROFESSION[1]}</span>
+        </motion.h1>
+        <motion.p
+          className="text-base text-[var(--foreground-muted)] sm:text-lg"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
           {HERO_DESCRIPTION}
-        </p>
-        <div className="flex justify-center lg:justify-start space-x-4">
+        </motion.p>
+        <motion.div
+          className="flex justify-center gap-3 lg:justify-start"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+        >
           <ContactButtons />
-        </div>
+        </motion.div>
       </div>
-      <div className="w-full max-w-md lg:max-w-lg xl:max-w-xl">
+      <motion.div
+        className="w-full max-w-xs sm:max-w-sm lg:max-w-md"
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
+      >
         <UserProfile />
-      </div>
+      </motion.div>
     </section>
   );
 }

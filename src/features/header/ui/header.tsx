@@ -1,217 +1,157 @@
-"use client"; // Указываем, что это клиентский компонент
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { HeaderLink } from "@/shared";
+import clsx from "clsx";
 
 import logo_default from "../../../../public/logo_default.svg";
 import tg_logo from "../../../../public/media/tg.svg";
 import git_logo from "../../../../public/media/git.svg";
 import email_logo from "../../../../public/media/email.svg";
-import { HERO_EMAIL, HERO_GITHUB, HERO_TELEGRAM, SITE_TITLE } from "@/shared/lib/constants";
+import {
+  HERO_EMAIL,
+  HERO_GITHUB,
+  HERO_TELEGRAM,
+  SITE_TITLE,
+} from "@/shared/lib/constants";
+
+const navLinks = [
+  { href: "/", text: "главная" },
+  { href: "/projects", text: "проекты" },
+  { href: "/about", text: "обо мне" },
+  { href: "/cv", text: "резюме" },
+  { href: "/contacts", text: "контакты" },
+];
+
+const socialLinks = [
+  { href: HERO_GITHUB, iconSrc: git_logo, iconAlt: "Github" },
+  { href: HERO_TELEGRAM, iconSrc: tg_logo, iconAlt: "Telegram" },
+  { href: `mailto:${HERO_EMAIL}`, iconSrc: email_logo, iconAlt: "Email" },
+];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние для управления меню
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Переключения состояния меню
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="flex font-(--font-) drop-shadow-2xl rounded-b-lg border-b border-gray-800 sticky top-0 justify-center items-center bg-(--background) mb-8 px-4 md:px-18 max-w-5xl w-full z-30">
-      <div className="absolute left-8 top-0 hidden flex-col space-y-4 items-center lg:flex z-30">
-        {/* Вертикальная линия с навигацией */}
-        <div className="w-px h-40 bg-gray-400"></div>
-        <HeaderLink
-          href={HERO_GITHUB}
-          variant="secondary"
-          icon={true}
-          activeClassName="font-bold text-white"
-          onClick={closeMenu}
-          iconSrc={git_logo}
-          iconAlt="Github"
-          iconSize="h-6 w-6"
-        />
-
-        <HeaderLink
-          href={HERO_TELEGRAM}
-          variant="secondary"
-          icon={true}
-          activeClassName="font-bold text-white"
-          onClick={closeMenu}
-          iconSrc={tg_logo}
-          iconAlt="Telegram"
-          iconSize="h-6 w-6"
-        />
-
-        <HeaderLink
-          href={`mailto:${HERO_EMAIL}`}
-          variant="secondary"
-          icon={true}
-          activeClassName="font-bold text-white"
-          onClick={closeMenu}
-          iconSrc={email_logo}
-          iconAlt="Email"
-          iconSize="h-6 w-6"
-        />
-      </div>
-
-      <div className="container mx-auto py-6 flex justify-between items-center">
-        {/* Логотип */}
-        <div className="flex gap-1 select-none">
-          <Image src={logo_default} alt="TomiloDev" className="h-8 w-8" />
-          <p className="text-white font-bold text-2xl">{SITE_TITLE}</p>
+    <header
+      className={clsx(
+        "site-header sticky top-0 z-30 w-full border-b border-[var(--border-muted)]",
+        "bg-[var(--background)]/95 backdrop-blur-md",
+        "flex justify-center px-4 md:px-8 py-4"
+      )}
+    >
+      <div className="flex w-full max-w-5xl items-center justify-between">
+        {/* Left: social links (desktop) */}
+        <div className="absolute left-4 top-1/2 hidden -translate-y-1/2 flex-col items-center gap-3 lg:flex">
+          <div className="h-16 w-px bg-[var(--border)]" aria-hidden />
+          {socialLinks.map(({ href, iconSrc, iconAlt }) => (
+            <HeaderLink
+              key={href}
+              href={href}
+              variant="secondary"
+              icon
+              iconSrc={iconSrc}
+              iconAlt={iconAlt}
+              iconSize="h-5 w-5"
+              activeClassName="font-bold text-[var(--foreground)]"
+              onClick={closeMenu}
+              className="opacity-80 hover:opacity-100 transition-opacity duration-200"
+            />
+          ))}
         </div>
 
-        {/* Навигация для десктопа */}
-        <nav className="hidden md:flex space-x-9">
-          <HeaderLink
-            href="/"
-            variant="secondary"
-            activeClassName="font-bold text-white"
-            text="главная"
-          />
+        {/* Center: logo + nav */}
+        <div className="flex flex-1 items-center justify-between lg:justify-center gap-8">
+          <div className="flex select-none items-center gap-2">
+            <Image src={logo_default} alt="" className="h-8 w-8" />
+            <span className="text-lg font-bold text-[var(--foreground)]">
+              {SITE_TITLE}
+            </span>
+          </div>
 
-          <HeaderLink
-            href="/projects"
-            variant="secondary"
-            activeClassName="font-bold text-white"
-            text="проекты"
-          />
-          <HeaderLink
-            href="/about"
-            variant="secondary"
-            activeClassName="font-bold text-white"
-            text="обо мне"
-          />
+          <nav className="hidden md:flex items-center gap-1" aria-label="Основная навигация">
+            {navLinks.map(({ href, text }) => (
+              <HeaderLink
+                key={href}
+                href={href}
+                variant="secondary"
+                activeClassName="font-semibold text-[var(--primary)]"
+                text={text}
+                className="px-3 py-2 rounded-lg hover:bg-[var(--surface)] text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+              />
+            ))}
+          </nav>
+        </div>
 
-          <HeaderLink
-            href="/contacts"
-            variant="secondary"
-            activeClassName="font-bold text-white"
-            text="контакты"
-          />
-        </nav>
-
-        {/* Кнопка бургера/крестика для мобилок */}
+        {/* Mobile menu button */}
         <button
-          className="md:hidden p-2 text-white hover:text-gray-300 focus:outline-none"
+          type="button"
+          className="md:hidden p-2 rounded-lg text-[var(--foreground)] hover:bg-[var(--surface)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
           onClick={toggleMenu}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
         >
           {isMenuOpen ? (
-            // Иконка крестика (закрытие)
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            // Иконка гамбургера (открытие)
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
           )}
         </button>
-
-        {/* Мобильное меню (ссылки) */}
-        <nav
-          className={`md:hidden fixed top-16 left-0 w-full h-[calc(100vh-4rem)] bg-(--background) transition-transform duration-300 ease-in-out transform z-30 ${
-            isMenuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
-          <div className="justify-start items-center container mx-auto px-4 py-12 flex flex-col space-y-8  h-full overflow-y-auto">
-            {/* Ссылки меню */}
-            <HeaderLink
-              href="/"
-              variant="mobile"
-              activeClassName="font-bold text-white"
-              onClick={closeMenu}
-              text="главная"
-            />
-
-            <HeaderLink
-              href="/projects"
-              variant="mobile"
-              activeClassName="font-bold text-white"
-              onClick={closeMenu}
-              text="проекты"
-            />
-
-            <HeaderLink
-              href="/about"
-              variant="mobile"
-              activeClassName="font-bold text-white"
-              onClick={closeMenu}
-              text="обо мне"
-            />
-
-            <HeaderLink
-              href="/contacts"
-              variant="mobile"
-              activeClassName="font-bold text-white"
-              onClick={closeMenu}
-              text="контакты"
-            />
-
-            {/* Социальные иконки */}
-            <div className="flex gap-8 mt-auto justify-center sticky bottom-0 bg-background py-4">
-              <HeaderLink
-                href={"/"}
-                variant="secondary"
-                icon={true}
-                activeClassName="font-bold text-white"
-                onClick={closeMenu}
-                iconSrc={git_logo}
-                iconAlt="Github"
-              />
-
-              <HeaderLink
-                href={"/"}
-                variant="secondary"
-                icon={true}
-                activeClassName="font-bold text-white"
-                onClick={closeMenu}
-                iconSrc={tg_logo}
-                iconAlt="Telegram"
-              />
-              <HeaderLink
-                href={"/"}
-                variant="secondary"
-                icon={true}
-                activeClassName="font-bold text-white"
-                onClick={closeMenu}
-                iconSrc={email_logo}
-                iconAlt="Email"
-              />
-            </div>
-          </div>
-        </nav>
       </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.nav
+            id="mobile-menu"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden overflow-hidden border-t border-[var(--border-muted)] bg-[var(--background-elevated)]"
+            aria-label="Мобильное меню"
+          >
+            <div className="flex flex-col gap-1 px-4 py-4">
+              {navLinks.map(({ href, text }) => (
+                <HeaderLink
+                  key={href}
+                  href={href}
+                  variant="mobile"
+                  activeClassName="font-semibold text-[var(--primary)]"
+                  onClick={closeMenu}
+                  text={text}
+                  className="rounded-lg px-4 py-3 text-[var(--foreground-muted)] hover:bg-[var(--surface)] hover:text-[var(--foreground)]"
+                />
+              ))}
+              <div className="mt-4 flex justify-center gap-6 border-t border-[var(--border-muted)] pt-4">
+                {socialLinks.map(({ href, iconSrc, iconAlt }) => (
+                  <HeaderLink
+                    key={href}
+                    href={href}
+                    variant="secondary"
+                    icon
+                    iconSrc={iconSrc}
+                    iconAlt={iconAlt}
+                    iconSize="h-6 w-6"
+                    activeClassName="font-bold text-[var(--foreground)]"
+                    onClick={closeMenu}
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

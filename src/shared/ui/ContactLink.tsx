@@ -1,58 +1,43 @@
 import Image from "next/image";
-
 import tg_icon from "../../../public/media/tg.svg";
 import git_icon from "../../../public/media/git.svg";
 import email_icon from "../../../public/media/email.svg";
+import clsx from "clsx";
 
 interface ContactLinkProps {
-  item: {
-    title: string; 
-    type: string; 
-    link: string; 
-  };
-  className?: string; 
-  onClick?: () => void; 
+  item: { title: string; type: string; link: string };
+  className?: string;
+  onClick?: () => void;
 }
 
-export default function ContactLink({ item, className = "", onClick }: ContactLinkProps) {
-  // Функция для получения иконки по типу
-  const getIcon = (type: string) => {
-    switch (type) {
-      case "email":
-        return email_icon;
-      case "telegram":
-        return tg_icon;
-      case "github":
-        return git_icon;
-    }
-    return null;
-  };
+const icons: Record<string, string> = {
+  email: email_icon,
+  telegram: tg_icon,
+  github: git_icon,
+};
+
+export default function ContactLink({
+  item,
+  className = "",
+  onClick,
+}: ContactLinkProps) {
+  const icon = icons[item.type];
 
   return (
-    <div className={`flex flex-col ${className}`}>
-
-      {/* Элемент с иконкой и ссылкой */}
-      <div className="flex items-center">
-        {/* Иконка */}
-        <Image
-          src={getIcon(item.type)}
-          alt={item.type} 
-          width={24}
-          height={24}
-          className="mr-2"
-        />
-
-        {/* Ссылка */}
-        <a
-          href={item.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="cursor-pointer text-gray-400"
-          onClick={onClick}
-        >
-          {item.title}
-        </a>
-      </div>
-    </div>
+    <a
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={onClick}
+      className={clsx(
+        "flex items-center gap-3 rounded-lg px-3 py-2 text-[var(--foreground-muted)] transition-colors hover:bg-[var(--surface-hover)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]",
+        className
+      )}
+    >
+      {icon && (
+        <Image src={icon} alt="" width={22} height={22} className="shrink-0" />
+      )}
+      <span>{item.title}</span>
+    </a>
   );
 }
